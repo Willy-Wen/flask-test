@@ -3,9 +3,9 @@ from flask import Flask, redirect, url_for, render_template, request, session
 from datetime import timedelta
 #import sqlite3
 application = Flask(__name__)
-application.config['DEBUG'] = True
-application.config['SEND_FILE_MAX_AGE_DEFAULT'] = timedelta(seconds=1)
-application.secret_key = "#230dec61-fee8-4ef2-a791-36f9e680c9fc"
+# application.config['DEBUG'] = True
+# application.config['SEND_FILE_MAX_AGE_DEFAULT'] = timedelta(seconds=1)
+# application.secret_key = "#230dec61-fee8-4ef2-a791-36f9e680c9fc"
 name = "Willy"
 fruit = ["apple","banana","grape","pineapple","strawberry"]
 
