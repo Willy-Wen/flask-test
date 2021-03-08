@@ -1,7 +1,7 @@
 from flask import Flask, redirect, url_for, render_template, request, session
-from flask_sqlalchemy import SQLAlchemy
+#from flask_sqlalchemy import SQLAlchemy
 from datetime import timedelta
-import sqlite3
+#import sqlite3
 application = Flask(__name__)
 application.config['DEBUG'] = True
 application.config['SEND_FILE_MAX_AGE_DEFAULT'] = timedelta(seconds=1)
