@@ -1,0 +1,18 @@
+html {
+  background-color: #00539F;
+}
+p{
+  color: black;
+}
+body {
+  width: 1500px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 0 0px 0px 0px;
+  border: 10px solid black;
+}
+footer {
+  height: 250px; /*設定footer本身高度*/
+  margin-top: 500px; /*隨footer高度需做調整*/
+  background-color: white;
+}
