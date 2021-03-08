@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+
+<p>
+  <h1>Hello, {{user}}</h1>
+</p>
+{% if user == 'Willy' %}
+  admin {{ user }}
+{% endif %}
+
+
+{% endblock %}
