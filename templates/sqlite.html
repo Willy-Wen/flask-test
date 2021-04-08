@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block body %}
+<h2>
+    DataBase: {{ a.db_name }}<br>
+    Table: {{ a.table_name }}
+</h2>
+<p>
+    <table border="1">
+        <tr>
+            {% for i in range(a.col_num) %}
+            <th width="100px">
+                {{ a.col_name[i] }}
+            </th>
+            {% endfor %}
+        </tr>
+        {% for i in range(a.data_num) %}
+        <tr>
+            {% for j in range(a.col_num) %}
+            <td>
+                {{ a.data[i][j] }}
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+
+<!--    {% for i in range(a.data_num) %}-->
+<!--          <li>{{ a.data[i] }}</li>-->
+<!--    {% endfor %}-->
+</p>
+
+{% endblock %}
