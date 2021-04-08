@@ -1,19 +1,36 @@
 from flask import Flask, redirect, url_for, render_template, request, session
-#from flask_sqlalchemy import SQLAlchemy
 from datetime import timedelta
-#import sqlite3
+import sqlite3
 application = Flask(__name__)
 application.config['DEBUG'] = True
-# application.config['SEND_FILE_MAX_AGE_DEFAULT'] = timedelta(seconds=1)
+application.config['SEND_FILE_MAX_AGE_DEFAULT'] = timedelta(seconds=1)
 application.secret_key = "#230dec61-fee8-4ef2-a791-36f9e680c9fc"
 name = "Willy"
 fruit = ["apple","banana","grape","pineapple","strawberry"]
 
-# conn = sqlite3.connect('C:/Users/w2666/tf2/flask/web1/SQLite/test.db') # ~代表路徑
-# c = conn.cursor()
-# c.execute("INSERT INTO test1(name, age) VALUES ('David', 40)")
-# conn.commit()
-# conn.close()
+class sql:
+    def __init__(self, db_name, table_name):
+        self.db_name = db_name
+        self.table_name = table_name
+        self.col_name=[]
+        self.col_num = 0
+        self.data = []
+        self.data_num = 0
+
+    def read(self):
+        conn = sqlite3.connect('../static/database/'+self.db_name+'.db')
+        self.col_name = []
+        cursor = conn.execute("SELECT name FROM PRAGMA_TABLE_INFO('"+self.table_name+"');")
+        for i in cursor:
+            self.col_name.append(i[0])
+        self.col_num = len(self.col_name)
+        cursor = conn.execute("SELECT * FROM "+self.table_name)
+        self.data = []
+        for i in cursor:
+            self.data.append(i)
+        self.data_num = len(self.data)
+
+
 @application.route("/")
 @application.route("/home/")
 @application.route("/home/<name>")
@@ -63,6 +80,13 @@ def user(site_name="User"):
 def logout():
     session.pop("user", None)
     return redirect(url_for("login"))
+
+@application.route("/sqlite")
+def sqlite(site_name="sqlite"):
+    a = sql(db_name='test', table_name='test1')
+    a.read()
+    return render_template('sqlite.html', **locals())
+
 
 if __name__ =="__main__":
     application.run(debug=True)
