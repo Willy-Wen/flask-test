@@ -18,7 +18,7 @@ class sql:
         self.data_num = 0
 
     def read(self):
-        conn = sqlite3.connect('../static/database/'+self.db_name+'.db')
+        conn = sqlite3.connect('static/database/'+self.db_name+'.db')
         self.col_name = []
         cursor = conn.execute("SELECT name FROM PRAGMA_TABLE_INFO('"+self.table_name+"');")
         for i in cursor:
