@@ -83,7 +83,7 @@ def logout():
 
 @application.route("/sqlite")
 def sqlite(site_name="sqlite"):
-    a = sql(db_name='test', table_name='test1')
+    a = sql(db_name='test', table_name='images')
     a.read()
     return render_template('sqlite.html', **locals())
 
